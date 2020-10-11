@@ -104,7 +104,7 @@ def depthFirstSearch(problem):
         if problem.isGoalState(state):
             return actions_list
         
-        for next_state, next_direction, _ in problem.getSuccessors(state):
+        for next_state, next_direction, _ in reversed(problem.getSuccessors(state)):
             if next_state in visited_state:
                 continue
             stack.push((next_state, actions_list + [next_direction]))
