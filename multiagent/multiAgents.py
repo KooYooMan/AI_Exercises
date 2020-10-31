@@ -74,12 +74,13 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
         "*** YOUR CODE HERE ***"
 
+        # keep the position close to the food
         newFood = successorGameState.getFood().asList()
         minFoodist = float("inf")
         for food in newFood:
             minFoodist = min(minFoodist, manhattanDistance(newPos, food))
 
-
+        # keep away the ghost
         for ghost in successorGameState.getGhostPositions():
             if (manhattanDistance(newPos, ghost) < 2):
                 return -float('inf')
